@@ -24,9 +24,18 @@ const advertsCarsSlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder.addCase(fetchCarsThunk.fulfilled, (state, { payload }) => {
-			state.cars = payload;
-		});
+		builder
+			.addCase(fetchCarsThunk.fulfilled, (state, { payload }) => {
+				state.cars = payload;
+				state.isLoading = false;
+			})
+			.addCase(fetchCarsThunk.pending, (state, { payload }) => {
+				state.isLoading = true;
+			})
+			.addCase(fetchCarsThunk.rejected, (state, { payload }) => {
+				state.isLoading = false;
+				state.error = payload;
+			});
 	},
 });
 export const { setFilter, addToFavorites, removeFromFavorites } = advertsCarsSlice.actions;

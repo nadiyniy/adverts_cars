@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAdvertsCars } from '../../redux/cars/selectros';
+import { selectAdvertsCars, selectIsLoading } from '../../redux/cars/selectros';
 import { fetchCarsThunk } from '../../redux/cars/operations';
 import CardList from '../CardList/CardList';
 import { AdvertsCarsStyled } from './AdvertsCars.styled';
+import AdvertsForm from '../AdvertsForm/AdvertsForm';
 
 const makes = [
 	'Buick',
@@ -127,7 +128,7 @@ const AdvertsCars = () => {
 
 	return (
 		<AdvertsCarsStyled>
-			<form className='adverts-form' onSubmit={handleSubmit}>
+			{/* <form className='adverts-form' onSubmit={handleSubmit}>
 				<label className='adverts-label'>
 					Car brand
 					<select className='adverts-select' onChange={handleMakeChange} value={selectedMake}>
@@ -170,7 +171,20 @@ const AdvertsCars = () => {
 					</div>
 				</label>
 				<button className='search-btn'>search</button>
-			</form>
+			</form> */}
+			<AdvertsForm
+				selectedMake={selectedMake}
+				selectedPriceRange={selectedPriceRange}
+				minMileage={minMileage}
+				maxMileage={maxMileage}
+				makes={makes}
+				priceOptions={priceOptions}
+				onMakeChange={handleMakeChange}
+				onPriceRangeChange={handlePriceRangeChange}
+				onMinMileageChange={handleMinMileageChange}
+				onMaxMileageChange={handleMaxMileageChange}
+				onSubmit={handleSubmit}
+			/>
 			{searching && !searchedCars.length ? (
 				<p>No matching cars found</p>
 			) : (
