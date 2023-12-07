@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAdvertsCars, selectIsLoading } from '../../redux/cars/selectros';
+import { selectAdvertsCars } from '../../redux/cars/selectros';
 import { fetchCarsThunk } from '../../redux/cars/operations';
 import CardList from '../CardList/CardList';
 import { AdvertsCarsStyled } from './AdvertsCars.styled';

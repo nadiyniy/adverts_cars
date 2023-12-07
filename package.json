@@ -1,7 +1,7 @@
 {
 	"name": "adverts_cars",
 	"version": "0.1.0",
-	"homepage": "https://nadiyniy.github.io/adverts_cars/",
+	"homepage": "https://nadiyniy.github.io/adverts_cars",
 	"private": true,
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.7",
