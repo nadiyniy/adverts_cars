@@ -1,4 +1,8 @@
 @import-normalize;
+@font-face {
+	font-family: 'Manrope';
+	src: url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap');
+}
 
 html,
 body,
@@ -86,6 +90,7 @@ video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 article,
 aside,
@@ -101,7 +106,8 @@ section {
 	display: block;
 }
 body {
-	font-family: 'DM Sans', Arial, sans-serif;
+	font-family: 'Manrope', sans-serif;
+	box-sizing: border-box;
 }
 ol,
 ul {

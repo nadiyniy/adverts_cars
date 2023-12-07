@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAdvertsCars } from '../../redux/cars/selectros';
 import { fetchCarsThunk } from '../../redux/cars/operations';
 import CardList from '../CardList/CardList';
+import { AdvertsCarsStyled } from './AdvertsCars.styled';
 
 const makes = [
 	'Buick',
@@ -49,6 +50,7 @@ const AdvertsCars = () => {
 	const [maxMileage, setMaxMileage] = useState('');
 	const [searchedCars, setSearchedCars] = useState([]);
 	const [searching, setSearching] = useState(false);
+	const [isDropdownOpened, setIsDropdownOpened] = useState(false);
 
 	useEffect(() => {
 		const data = {
@@ -125,10 +127,11 @@ const AdvertsCars = () => {
 	};
 
 	return (
-		<>
-			<div>
-				<form onSubmit={handleSubmit}>
-					<select onChange={handleMakeChange} value={selectedMake}>
+		<AdvertsCarsStyled>
+			<form className='adverts-form' onSubmit={handleSubmit}>
+				<label className='adverts-label'>
+					Car brand
+					<select className='adverts-select' onChange={handleMakeChange} value={selectedMake}>
 						<option value=''>All Makes</option>
 						{makes.map((item) => (
 							<option key={item} value={item}>
@@ -136,31 +139,50 @@ const AdvertsCars = () => {
 							</option>
 						))}
 					</select>
-					<select onChange={handlePriceRangeChange} value={selectedPriceRange}>
+				</label>
+				<label className='adverts-label'>
+					Price/ 1 hour
+					<select className='adverts-select' onChange={handlePriceRangeChange} value={selectedPriceRange}>
 						{priceOptions.map((option) => (
 							<option key={option.value} value={option.value}>
 								{option.label}
 							</option>
 						))}
 					</select>
-					<label>
-						Min Mileage:
-						<input type='text' value={minMileage} onChange={handleMinMileageChange} />
-					</label>
-					<label>
-						Max Mileage:
-						<input type='text' value={maxMileage} onChange={handleMaxMileageChange} />
-					</label>
-					<button>search</button>
-				</form>
-			</div>
+				</label>
+
+				<label className='adverts-label mileage'>
+					Сar mileage / km
+					<div className='container-input'>
+						<input
+							className='adverts-input'
+							placeholder='from'
+							type='text'
+							value={minMileage}
+							onChange={handleMinMileageChange}
+						/>
+						<input
+							className='adverts-input'
+							placeholder='to'
+							type='text'
+							value={maxMileage}
+							onChange={handleMaxMileageChange}
+						/>
+					</div>
+				</label>
+				<button className='search-btn'>search</button>
+			</form>
 			{searching && !searchedCars.length ? (
 				<p>No matching cars found</p>
 			) : (
 				<CardList items={searchedCars.length ? searchedCars : allCars} />
 			)}
-			{displayedCars <= 32 && <button onClick={loadMore}>load more</button>}
-		</>
+			{displayedCars <= 32 && (
+				<button className='load-more-btn' onClick={loadMore}>
+					load more
+				</button>
+			)}
+		</AdvertsCarsStyled>
 	);
 };
 

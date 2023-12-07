@@ -5,12 +5,14 @@ import { Container } from '../../styles/Commons.styled';
 
 const Layout = () => {
 	return (
-		<Container>
+		<>
 			<Header />
-			<Suspense fallback={<p>Loading...</p>}>
-				<Outlet />
-			</Suspense>
-		</Container>
+			<Container>
+				<Suspense fallback={<p>Loading...</p>}>
+					<Outlet />
+				</Suspense>
+			</Container>
+		</>
 	);
 };
 
