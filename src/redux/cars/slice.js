@@ -5,6 +5,7 @@ const initialState = {
 	cars: [],
 	error: null,
 	isLoading: false,
+	filter: '',
 	favorites: [],
 };
 
@@ -15,6 +16,12 @@ const advertsCarsSlice = createSlice({
 		setFilter: (state, { payload }) => {
 			state.filter = payload;
 		},
+		addToFavorites: (state, { payload }) => {
+			state.favorites.push(payload);
+		},
+		removeFromFavorites: (state, { payload }) => {
+			state.favorites = state.favorites.filter((favorite) => favorite.id !== payload.id);
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchCarsThunk.fulfilled, (state, { payload }) => {
@@ -22,6 +29,6 @@ const advertsCarsSlice = createSlice({
 		});
 	},
 });
-export const { setFilter } = advertsCarsSlice.actions;
+export const { setFilter, addToFavorites, removeFromFavorites } = advertsCarsSlice.actions;
 
 export const advertsCarsReducer = advertsCarsSlice.reducer;
