@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { useModal } from '../../shared/hooks/UseModal';
 import Modal from '../Modal/Modal';
 import CarCardInformation from '../CarCardInformation/CarCardInformation';
 import { useDispatch, useSelector } from 'react-redux';

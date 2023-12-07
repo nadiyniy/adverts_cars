@@ -1,8 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectAdvertsCars } from '../../redux/cars/selectros';
-import { Link } from 'react-router-dom';
-import { useModal } from '../../shared/hooks/UseModal';
 
 const CarCardInformation = ({
 	img,
@@ -22,8 +18,6 @@ const CarCardInformation = ({
 	rentalPrice,
 	closeModal,
 }) => {
-	// const { closeModal } = useModal();
-
 	return (
 		<div style={{ background: 'white' }}>
 			<button onClick={() => closeModal(false)}>

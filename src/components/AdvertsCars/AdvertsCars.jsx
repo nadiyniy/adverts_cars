@@ -23,10 +23,20 @@ const makes = [
 	'Audi',
 	'BMW',
 	'Chevrolet',
-	'Mercedes-Benz',
 	'Chrysler',
 	'Kia',
 	'Land',
+];
+const priceOptions = [
+	{ label: 'Any Price', value: '' },
+	{ label: '$0 - $10', value: '0-10' },
+	{ label: '$10 - $20', value: '10-20' },
+	{ label: '$20 - $30', value: '20-30' },
+	{ label: '$30 - $40', value: '30-40' },
+	{ label: '$40 - $50', value: '40-50' },
+	{ label: '$50 - $60', value: '50-60' },
+	{ label: '$60 - $70', value: '60-70' },
+	{ label: '$70 - $80', value: '70-80' },
 ];
 
 const AdvertsCars = () => {
@@ -34,6 +44,11 @@ const AdvertsCars = () => {
 	const dispatch = useDispatch();
 	const [displayedCars, setDisplayedCars] = useState(12);
 	const [selectedMake, setSelectedMake] = useState('');
+	const [selectedPriceRange, setSelectedPriceRange] = useState('');
+	const [minMileage, setMinMileage] = useState('');
+	const [maxMileage, setMaxMileage] = useState('');
+	const [searchedCars, setSearchedCars] = useState([]);
+	const [searching, setSearching] = useState(false);
 
 	useEffect(() => {
 		const data = {
@@ -49,22 +64,101 @@ const AdvertsCars = () => {
 	const handleMakeChange = (event) => {
 		setSelectedMake(event.target.value);
 	};
+	const handlePriceRangeChange = (event) => {
+		const selectedValue = event.target.value;
+		setSelectedPriceRange(selectedValue);
+	};
 
-	const filteredCars = selectedMake ? allCars.filter((car) => car.make === selectedMake) : allCars;
+	const filterCars = (car) => {
+		const numericValue = parseFloat(car.rentalPrice.replace(/[^\d.]/g, ''));
+
+		if (!selectedPriceRange) {
+			return true;
+		}
+
+		const [min, max] = selectedPriceRange.split('-');
+		return numericValue >= Number(min) && numericValue <= Number(max);
+	};
+	const filterByMileage = (car) => {
+		const mileage = car.mileage;
+
+		if (minMileage && !/^\d+$/.test(minMileage)) {
+			return false;
+		}
+
+		if (maxMileage && !/^\d+$/.test(maxMileage)) {
+			return false;
+		}
+
+		if (minMileage && mileage < Number(minMileage)) {
+			return false;
+		}
+
+		if (maxMileage && mileage > Number(maxMileage)) {
+			return false;
+		}
+
+		return true;
+	};
+
+	const handleMinMileageChange = (event) => {
+		setMinMileage(event.target.value);
+	};
+
+	const handleMaxMileageChange = (event) => {
+		setMaxMileage(event.target.value);
+	};
+
+	const handleSearch = () => {
+		const filtered = allCars
+			.filter((car) => !selectedMake || car.make === selectedMake)
+			.filter(filterCars)
+			.filter(filterByMileage);
+
+		setSearchedCars(filtered);
+		setSearching(true);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		handleSearch();
+	};
 
 	return (
 		<>
 			<div>
-				<select onChange={handleMakeChange} value={selectedMake}>
-					<option value=''>All Makes</option>
-					{makes.map((item) => (
-						<option key={item} value={item}>
-							{item}
-						</option>
-					))}
-				</select>
+				<form onSubmit={handleSubmit}>
+					<select onChange={handleMakeChange} value={selectedMake}>
+						<option value=''>All Makes</option>
+						{makes.map((item) => (
+							<option key={item} value={item}>
+								{item}
+							</option>
+						))}
+					</select>
+					<select onChange={handlePriceRangeChange} value={selectedPriceRange}>
+						{priceOptions.map((option) => (
+							<option key={option.value} value={option.value}>
+								{option.label}
+							</option>
+						))}
+					</select>
+					<label>
+						Min Mileage:
+						<input type='text' value={minMileage} onChange={handleMinMileageChange} />
+					</label>
+					<label>
+						Max Mileage:
+						<input type='text' value={maxMileage} onChange={handleMaxMileageChange} />
+					</label>
+					<button>search</button>
+				</form>
 			</div>
-			{!filteredCars?.length ? <p>No matching cars found</p> : <CardList items={filteredCars} />}
+			{searching && !searchedCars.length ? (
+				<p>No matching cars found</p>
+			) : (
+				<CardList items={searchedCars.length ? searchedCars : allCars} />
+			)}
 			{displayedCars <= 32 && <button onClick={loadMore}>load more</button>}
 		</>
 	);
