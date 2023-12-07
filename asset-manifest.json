@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.97141e91.css",
+    "main.js": "/static/js/main.f76005b3.js",
+    "static/js/787.9a0d17fd.chunk.js": "/static/js/787.9a0d17fd.chunk.js",
+    "static/media/welcome-image.jpeg": "/static/media/welcome-image.50febce73cd0f0ae35bc.jpeg",
+    "static/media/pngwing.com.png": "/static/media/pngwing.com.0ed9aa9b7234d4e7c01a.png",
+    "static/media/heart.svg": "/static/media/heart.ac060e771360fcc26ebb0c86173c8396.svg",
+    "static/media/heart-favorite.svg": "/static/media/heart-favorite.623a3b874365d724c658e79a860ad4a4.svg",
+    "index.html": "/index.html",
+    "static/media/close.svg": "/static/media/close.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
+    "main.97141e91.css.map": "/static/css/main.97141e91.css.map",
+    "main.f76005b3.js.map": "/static/js/main.f76005b3.js.map",
+    "787.9a0d17fd.chunk.js.map": "/static/js/787.9a0d17fd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.97141e91.css",
+    "static/js/main.f76005b3.js"
+  ]
+}
