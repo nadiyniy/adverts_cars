@@ -50,7 +50,6 @@ const AdvertsCars = () => {
 	const [maxMileage, setMaxMileage] = useState('');
 	const [searchedCars, setSearchedCars] = useState([]);
 	const [searching, setSearching] = useState(false);
-	const [isDropdownOpened, setIsDropdownOpened] = useState(false);
 
 	useEffect(() => {
 		const data = {

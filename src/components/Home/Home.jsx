@@ -1,5 +1,4 @@
 import React from 'react';
-// import WelcomeImage from '../../images/welcome-page-img.jpeg';
 import { Link } from 'react-router-dom';
 import { Div } from './Home.styled';
 
