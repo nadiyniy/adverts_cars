@@ -2,7 +2,12 @@
 
 **Website:**
 
-<https://clinquant-pithivier-699791.netlify.app>
+Netlify: <https://clinquant-pithivier-699791.netlify.app> 
+
+Vercel: <https://adverts-cars-jqssmwvca-vladyslavs-projects-fa3935ae.vercel.app>
+
+GitHub: <https://nadiyniy.github.io/adverts_cars>
+
 
 [](https://clinquant-pithivier-699791.netlify.app/catalog)
 
