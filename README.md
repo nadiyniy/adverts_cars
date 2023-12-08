@@ -2,7 +2,7 @@
 
 **Website:**
 
-<https://clinquant-pithivier-699791.netlify.app/catalog>
+<https://clinquant-pithivier-699791.netlify.app>
 
 [](https://clinquant-pithivier-699791.netlify.app/catalog)
 
