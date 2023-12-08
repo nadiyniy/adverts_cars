@@ -5,6 +5,10 @@ export const Div = styled.div`
 	max-width: 540px;
 	padding: 40px;
 	position: relative;
+	@media (width<=425px) {
+		max-width: 90%;
+		margin: 0 auto;
+	}
 	.card-container-img {
 	}
 	.modal-close-btn {
@@ -103,7 +107,7 @@ export const Div = styled.div`
 		line-height: 1.42;
 		transition: all 0.3s ease-in-out;
 		text-decoration: none;
-		margin-top: 30px;
+		margin-top: 24px;
 		&:hover {
 			background-color: #0b44cd;
 		}
