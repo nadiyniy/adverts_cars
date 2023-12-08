@@ -10,8 +10,8 @@ const Home = () => {
 				<h1 className='home-title'>Welcome to RentCar</h1>
 				<h2 className='home-subtitle'>Your Gateway to Exciting Journeys</h2>
 				<p className='home-par'>
-					Welcome to [Your Company Name], where every journey is an adventure waiting to happen! We are delighted to be
-					your trusted partner in exploring the roads with comfort, style, and ease.
+					Welcome to RentCar, where every journey is an adventure waiting to happen! We are delighted to be your trusted
+					partner in exploring the roads with comfort, style, and ease.
 				</p>
 				<h2 className='home-subtitle'>Discover Our Fleet</h2>
 				<p className='home-par'>
