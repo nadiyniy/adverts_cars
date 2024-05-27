@@ -5,6 +5,7 @@ import AdvertsCars from './AdvertsCars/AdvertsCars';
 import FavoritesCars from './FavoritesCars/FavoritesCars';
 
 export const App = () => {
+    
 	return (
 		<Routes>
 			<Route path='/' element={<Layout />}>

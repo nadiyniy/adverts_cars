@@ -1,10 +1,25 @@
-import React, { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
-import Header from '../Header/Header';
-import { Container } from '../../styles/Commons.styled';
-import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
+import React, { Suspense, useEffect, useState } from 'react'
+import { Outlet } from 'react-router-dom'
+import Header from '../Header/Header'
+import { Container } from '../../styles/Commons.styled'
+import LoaderSpinner from '../LoaderSpinner/LoaderSpinner'
+import { createClient } from 'contentful'
+export const fetchCarWashing = async () => {
+	const credentials = {
+		space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+		accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
+	}
+	const client = createClient(credentials)
 
+	return await client.getEntries({ content_type: 'carWashingCoordinate' })
+}
 const Layout = () => {
+	const [сarWashing, setCarWashing] = useState()
+
+	useEffect(() => {
+		fetchCarWashing().then(res => setCarWashing(res))
+	}, [])
+	console.log(сarWashing)
 	return (
 		<>
 			<Header />
@@ -14,7 +29,7 @@ const Layout = () => {
 				</Suspense>
 			</Container>
 		</>
-	);
-};
+	)
+}
 
-export default Layout;
+export default Layout
