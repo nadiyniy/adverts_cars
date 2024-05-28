@@ -7,8 +7,8 @@ import { createClient } from 'contentful'
 
 export const fetchCarWashing = async () => {
 	const credentials = {
-		space: process.env.REACT_APP_CONTENTFUL_SPACE_ID1,
-		accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN2,
+		space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+		accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
 	}
 	const client = createClient(credentials)
 
